@@ -2,8 +2,6 @@ package utils;
 
 import constants.FrameworkConstants;
 import enums.ConfigProperties;
-import exceptions.InvalidFilePathException;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Objects;
@@ -27,7 +25,7 @@ public final class ReadPropertyFile {
         String value="";
         value = properties.getProperty(key.name().toLowerCase());
         if(Objects.isNull(value)){
-            throw new InvalidFilePathException("Property name "+key+ " is not found. Please check config.properties");
+            throw new RuntimeException("Property name "+key+ " is not found. Please check config.properties");
         }
         return value;
     }
