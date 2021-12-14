@@ -4,10 +4,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
-public final class TC01 extends BaseTest {
+public final class TC02 extends BaseTest {
 
     @Test()
-    public void verifyProductsFoundCount(){
+    public void verifyProductsFoundCount() throws InterruptedException {
         HomePage homePage = new HomePage();
         String totalProductCountText = homePage.getTotalProductCountText();
         Assert.assertEquals(16,Integer.parseUnsignedInt(totalProductCountText));
