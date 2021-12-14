@@ -1,7 +1,6 @@
 package driver;
 
 import enums.ConfigProperties;
-import exceptions.BrowserInvocationFailedException;
 import factories.DriverFactory;
 import utils.ReadPropertyFile;
 
@@ -17,7 +16,7 @@ public final class Driver {
             try {
                 DriverManager.setDriver(DriverFactory.getDriver());
             } catch (MalformedURLException e) {
-                throw new BrowserInvocationFailedException("Please check the browser capabilities",e);
+                throw new RuntimeException("Please check the browser capabilities",e);
             }
             DriverManager.getDriver().get(ReadPropertyFile.getValue(ConfigProperties.URL));
             DriverManager.getDriver().manage().window().maximize();
