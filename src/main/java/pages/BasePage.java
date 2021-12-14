@@ -4,6 +4,7 @@ import driver.DriverManager;
 import enums.WaitStrategy;
 import factories.ExplicitWaitFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 import reports.ExtentLogger;
 
 public class BasePage {
@@ -23,12 +24,19 @@ public class BasePage {
         return DriverManager.getDriver().findElement(by).getText();
     }
 
-    protected String getTextOnlyNumber(By by,WaitStrategy waitStrategy){
+    protected int getTextOnlyNumber(By by, WaitStrategy waitStrategy){
         ExplicitWaitFactory.performExplicitWait(by,waitStrategy);
-        return DriverManager.getDriver().findElement(by).getText().replaceAll("[^0-9]", "");
+        String text = DriverManager.getDriver().findElement(by).getText().replaceAll("[^0-9]", "");
+        return Integer.parseInt(text);
     }
 
     protected void waitForElementToLoad(By by,WaitStrategy waitStrategy){
         ExplicitWaitFactory.performExplicitWait(by,waitStrategy);
+    }
+
+    protected void selectDropDownUsingValue(By by,WaitStrategy waitStrategy,String valueText){
+        ExplicitWaitFactory.performExplicitWait(by,waitStrategy);
+        Select select = new Select(DriverManager.getDriver().findElement(by));
+        select.selectByValue(valueText);
     }
 }

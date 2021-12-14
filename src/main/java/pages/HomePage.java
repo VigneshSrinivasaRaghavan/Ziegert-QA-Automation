@@ -11,17 +11,22 @@ public final class HomePage extends BasePage {
 
     private static By totalProductsFound = By.cssSelector(".products-found>span");
     private static By productItem = By.cssSelector(".shelf-item");
-    private By sizesButton(String size) {
+    private static By sizesButton(String size) {
         String locatorText = "//span[text()='"+size+"']";
         return By.xpath(locatorText);
     }
     private static By spinnerIcon = By.cssSelector(".spinner");
+    private static By orderByDropdown = By.cssSelector(".sort>select");
+    private static By itemPriceByItem(String itemNumber) {
+        String locatorText = "(//div[@class='shelf-item__price']//div[@class='val'])["+itemNumber+"]";
+        return By.xpath(locatorText);
+    }
 
     public void waitForItemsToLoad(){
         waitForElementToLoad(productItem,WaitStrategy.VISIBLE);
     }
 
-    public String getTotalProductCountText(){
+    public int getTotalProductCountText(){
         waitForItemsToLoad();
         return getTextOnlyNumber(totalProductsFound,WaitStrategy.VISIBLE);
     }
@@ -45,4 +50,12 @@ public final class HomePage extends BasePage {
         }
     }
 
+    public void selectOrderByDropDown(String value){
+        selectDropDownUsingValue(orderByDropdown,WaitStrategy.VISIBLE,value);
+        waitForSpinnerToDisappear();
+    }
+
+    public int getItemPrice(String itemNumber){
+        return getTextOnlyNumber(itemPriceByItem(itemNumber),WaitStrategy.VISIBLE);
+    }
 }

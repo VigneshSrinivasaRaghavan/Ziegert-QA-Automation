@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
+<suite name="All Test Suite" parallel="methods" thread-count="5">
     <listeners>
         <listener class-name="listeners.Listener"/>
     </listeners>
@@ -8,6 +8,7 @@
           name="/Users/vigneshs/Vignesh-Personal-Folder/Projects-Repos/Ziegert-QA-Automation">
         <classes>
             <class name="tests.TC01"/>
+            <class name="tests.TC02"/>
         </classes>
     </test>
 </suite>

@@ -9,22 +9,18 @@ public final class TC01 extends BaseTest {
     @Test()
     public void verifyProductsFoundCount(){
         HomePage homePage = new HomePage();
-        String totalProductCountText = homePage.getTotalProductCountText();
-        Assert.assertEquals(16,Integer.parseUnsignedInt(totalProductCountText));
+        Assert.assertEquals(16,homePage.getTotalProductCountText());
 
         homePage.clickSizeButton("XS");
-        String totalProductCountText2 = homePage.getTotalProductCountText();
-        Assert.assertEquals(1,Integer.parseUnsignedInt(totalProductCountText2));
+        Assert.assertEquals(1,homePage.getTotalProductCountText());
         homePage.clickSizeButton("XS");
 
         homePage.clickSizeButton("S");
-        String totalProductCountText3 = homePage.getTotalProductCountText();
-        Assert.assertEquals(2,Integer.parseUnsignedInt(totalProductCountText3));
+        Assert.assertEquals(2,homePage.getTotalProductCountText());
         homePage.clickSizeButton("S");
 
         homePage.clickSizeButton("M");
-        String totalProductCountText4 = homePage.getTotalProductCountText();
-        Assert.assertEquals(1,Integer.parseUnsignedInt(totalProductCountText4));
+        Assert.assertEquals(1,homePage.getTotalProductCountText());
         homePage.clickSizeButton("M");
     }
 }
