@@ -9,18 +9,18 @@ public final class TC01 extends BaseTest {
     @Test()
     public void verifyProductsFoundCount(){
         HomePage homePage = new HomePage();
-        Assert.assertEquals(16,homePage.getTotalProductCountText());
+        Assert.assertEquals(homePage.getTotalProductCountText(),16,"Product Count does not match");
 
         homePage.selectSize("XS");
-        Assert.assertEquals(1,homePage.getTotalProductCountText());
+        Assert.assertEquals(homePage.getTotalProductCountText(),1,"Product Count does not match");
         homePage.unselectSize("XS");
 
         homePage.selectSize("S");
-        Assert.assertEquals(2,homePage.getTotalProductCountText());
+        Assert.assertEquals(homePage.getTotalProductCountText(),2,"Product Count does not match");
         homePage.unselectSize("S");
 
         homePage.selectSize("M");
-        Assert.assertEquals(1,homePage.getTotalProductCountText());
+        Assert.assertEquals(homePage.getTotalProductCountText(),1,"Product Count does not match");
         homePage.unselectSize("M");
     }
 }

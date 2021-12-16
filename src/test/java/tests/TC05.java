@@ -19,7 +19,7 @@ public final class TC05 extends BaseTest {
         int cartTotalPriceText = cartPage.getCartTotalPriceText();
         int bagQuantityCountText = cartPage.getBagQuantityCountText();
 
-        Assert.assertEquals(itemPrice*3,cartTotalPriceText);
-        Assert.assertEquals(3,bagQuantityCountText);
+        Assert.assertEquals(cartTotalPriceText,itemPrice*3,"Price does not match");
+        Assert.assertEquals(bagQuantityCountText,3,"Quantity does not match");
     }
 }

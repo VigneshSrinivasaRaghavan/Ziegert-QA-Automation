@@ -19,14 +19,14 @@ public final class TC03 extends BaseTest {
         int bagQuantityCountText = cartPage.getBagQuantityCountText();
 
 
-        Assert.assertEquals(itemPrice,addedProductPriceText);
-        Assert.assertEquals(productName,addedProductNameText);
-        Assert.assertEquals(1,bagQuantityCountText);
+        Assert.assertEquals(addedProductPriceText,itemPrice,"Price does not match");
+        Assert.assertEquals(addedProductNameText,productName,"Product Name does not match");
+        Assert.assertEquals(bagQuantityCountText,1,"Quantity does not match");
 
         cartPage.clickCheckoutButton();
         String alertText = cartPage.getAlertText().replaceAll("[^0-9]", "");
         cartPage.closeAlert();
 
-        Assert.assertEquals(itemPrice,Integer.parseInt(alertText));
+        Assert.assertEquals(Integer.parseInt(alertText),itemPrice,"Price does not match");
     }
 }

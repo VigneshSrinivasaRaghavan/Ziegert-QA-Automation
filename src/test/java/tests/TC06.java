@@ -8,7 +8,7 @@ import pages.HomePage;
 public final class TC06 extends BaseTest {
 
     @Test()
-    public void clearItemsInCart() {
+    public void NegativeTestToCheckPriceMismatch() {
         HomePage homePage = new HomePage();
         CartPage cartPage = homePage.clickAddToCart("1")
                 .waitForCartPageToLoad();
