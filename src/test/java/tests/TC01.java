@@ -11,16 +11,16 @@ public final class TC01 extends BaseTest {
         HomePage homePage = new HomePage();
         Assert.assertEquals(16,homePage.getTotalProductCountText());
 
-        homePage.clickSizeButton("XS");
+        homePage.selectSize("XS");
         Assert.assertEquals(1,homePage.getTotalProductCountText());
-        homePage.clickSizeButton("XS");
+        homePage.unselectSize("XS");
 
-        homePage.clickSizeButton("S");
+        homePage.selectSize("S");
         Assert.assertEquals(2,homePage.getTotalProductCountText());
-        homePage.clickSizeButton("S");
+        homePage.unselectSize("S");
 
-        homePage.clickSizeButton("M");
+        homePage.selectSize("M");
         Assert.assertEquals(1,homePage.getTotalProductCountText());
-        homePage.clickSizeButton("M");
+        homePage.unselectSize("M");
     }
 }

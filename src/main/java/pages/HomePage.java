@@ -1,5 +1,6 @@
 package pages;
 
+import driver.Driver;
 import driver.DriverManager;
 import enums.WaitStrategy;
 import org.openqa.selenium.By;
@@ -21,7 +22,7 @@ public final class HomePage extends BasePage {
         String locatorText = "(//div[@class='shelf-item__price']//div[@class='val'])["+itemNumber+"]";
         return By.xpath(locatorText);
     }
-
+    
     public void waitForItemsToLoad(){
         waitForElementToLoad(productItem,WaitStrategy.VISIBLE);
     }
@@ -31,10 +32,26 @@ public final class HomePage extends BasePage {
         return getTextOnlyNumber(totalProductsFound,WaitStrategy.VISIBLE);
     }
 
-    public void clickSizeButton(String sizeValue){
+    public void selectSize(String sizeValue){
+        boolean selected = DriverManager.getDriver().findElement(sizesButton(sizeValue)).findElement(By.xpath("./preceding-sibling::input")).isSelected();
+        if(!selected){
         click(sizesButton(sizeValue),WaitStrategy.CLICKABLE,sizeValue+" Size");
         waitForSpinnerToDisappear();
-        waitForItemsToLoad();
+        waitForItemsToLoad();}
+        else{
+            System.out.println("Already "+sizeValue+" is selected");
+        }
+    }
+
+    public void unselectSize(String sizeValue){
+        boolean selected = DriverManager.getDriver().findElement(sizesButton(sizeValue)).findElement(By.xpath("./preceding-sibling::input")).isSelected();
+        if(selected){
+            click(sizesButton(sizeValue),WaitStrategy.CLICKABLE,sizeValue+" Size");
+            waitForSpinnerToDisappear();
+            waitForItemsToLoad();}
+        else{
+            System.out.println("Already "+sizeValue+" is un-selected");
+        }
     }
 
     public void waitForSpinnerToDisappear(){
@@ -58,4 +75,6 @@ public final class HomePage extends BasePage {
     public int getItemPrice(String itemNumber){
         return getTextOnlyNumber(itemPriceByItem(itemNumber),WaitStrategy.VISIBLE);
     }
+    
+
 }
