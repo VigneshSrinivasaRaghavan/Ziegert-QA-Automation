@@ -25,19 +25,8 @@ public class FrameworkConstants {
 
     public static String getExtentReportFilePath() {
         if(extentReportFilePath.isEmpty()){
-            extentReportFilePath=createReportPath();
+            extentReportFilePath=EXTENTREPORTFOLDERPATH+"index.html";
         }
         return extentReportFilePath;
-    }
-
-    private static String createReportPath(){
-        if(ReadPropertyFile.getValue(ConfigProperties.OVERRIDEREPORTS).equalsIgnoreCase("yes")){
-            return EXTENTREPORTFOLDERPATH+"index.html";
-        }
-        else {
-            SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyy_HH:mm:ss");
-            Date date = new Date();
-            return EXTENTREPORTFOLDERPATH+formatter.format(date)+"_"+"index.html";
-        }
     }
 }
