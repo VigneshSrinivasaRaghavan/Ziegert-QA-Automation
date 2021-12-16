@@ -5,6 +5,11 @@ import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.HomePage;
 
+/*
+ * This test is to verify if the quantity can be increased directly in the Cart
+ * And also to verify if the total price post increasing the quantity
+ */
+
 public final class TC05 extends BaseTest {
 
     @Test()

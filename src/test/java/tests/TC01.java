@@ -4,6 +4,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
+/*
+ * This test is to verify the default total no of product count
+ * And also to verify if each size is being filtered and to verify corresponding count
+ */
+
 public final class TC01 extends BaseTest {
 
     @Test()

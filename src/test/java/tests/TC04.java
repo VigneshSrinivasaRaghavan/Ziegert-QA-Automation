@@ -5,6 +5,10 @@ import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.HomePage;
 
+/*
+ * This test is to verify if the items can be cleared from the cart
+ * And also to verify the price and quantity in Cart becomes Zero
+ */
 public final class TC04 extends BaseTest {
 
     @Test()

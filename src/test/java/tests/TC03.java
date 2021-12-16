@@ -5,6 +5,11 @@ import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.HomePage;
 
+/*
+ * This test is to check out a product item
+ * And also to verify the price post checking out an item
+ */
+
 public final class TC03 extends BaseTest {
 
     @Test()
