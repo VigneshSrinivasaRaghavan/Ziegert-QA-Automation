@@ -1,6 +1,5 @@
 package pages;
 
-import driver.Driver;
 import driver.DriverManager;
 import enums.WaitStrategy;
 import org.openqa.selenium.By;
@@ -12,17 +11,25 @@ public final class HomePage extends BasePage {
 
     private static By totalProductsFound = By.cssSelector(".products-found>span");
     private static By productItem = By.cssSelector(".shelf-item");
+    private static By spinnerIcon = By.cssSelector(".spinner");
+    private static By orderByDropdown = By.cssSelector(".sort>select");
     private static By sizesButton(String size) {
         String locatorText = "//span[text()='"+size+"']";
         return By.xpath(locatorText);
     }
-    private static By spinnerIcon = By.cssSelector(".spinner");
-    private static By orderByDropdown = By.cssSelector(".sort>select");
     private static By itemPriceByItem(String itemNumber) {
         String locatorText = "(//div[@class='shelf-item__price']//div[@class='val'])["+itemNumber+"]";
         return By.xpath(locatorText);
     }
-    
+    private static By productNameByEachItem(String itemNumber) {
+        String locatorText = "(//p[@class='shelf-item__title'])["+itemNumber+"]";
+        return By.xpath(locatorText);
+    }
+    private static By addToCartByEachItem(String itemNumber) {
+        String locatorText = "(//div[@class='shelf-item__buy-btn'])["+itemNumber+"]";
+        return By.xpath(locatorText);
+    }
+
     public void waitForItemsToLoad(){
         waitForElementToLoad(productItem,WaitStrategy.VISIBLE);
     }
@@ -75,6 +82,13 @@ public final class HomePage extends BasePage {
     public int getItemPrice(String itemNumber){
         return getTextOnlyNumber(itemPriceByItem(itemNumber),WaitStrategy.VISIBLE);
     }
-    
 
+    public String getProductName(String itemNumber){
+        return getText(productNameByEachItem(itemNumber),WaitStrategy.VISIBLE);
+    }
+
+    public CartPage clickAddToCart(String itemNumber){
+        click(addToCartByEachItem(itemNumber),WaitStrategy.CLICKABLE,"Add to cart Button");
+        return new CartPage();
+    }
 }

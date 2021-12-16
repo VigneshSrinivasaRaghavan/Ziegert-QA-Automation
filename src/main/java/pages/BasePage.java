@@ -3,6 +3,7 @@ package pages;
 import driver.DriverManager;
 import enums.WaitStrategy;
 import factories.ExplicitWaitFactory;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 import reports.ExtentLogger;
@@ -38,5 +39,15 @@ public class BasePage {
         ExplicitWaitFactory.performExplicitWait(by,waitStrategy);
         Select select = new Select(DriverManager.getDriver().findElement(by));
         select.selectByValue(valueText);
+    }
+
+    public String getAlertText(){
+        Alert alert = DriverManager.getDriver().switchTo().alert();
+        return alert.getText();
+    }
+
+    public void closeAlert(){
+        Alert alert = DriverManager.getDriver().switchTo().alert();
+        alert.accept();
     }
 }
