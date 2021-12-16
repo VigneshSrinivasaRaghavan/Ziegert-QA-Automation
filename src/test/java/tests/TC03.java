@@ -14,8 +14,8 @@ public final class TC03 extends BaseTest {
         String productName = homePage.getProductName("1");
         homePage.clickAddToCart("1").waitForCartPageToLoad();
         CartPage cartPage = new CartPage();
-        String addedProductNameText = cartPage.getAddedProductNameText("1");
-        int addedProductPriceText = cartPage.getAddedProductPriceText("1");
+        String addedProductNameText = cartPage.getAddedProductNameText();
+        int addedProductPriceText = cartPage.getAddedProductPriceText();
         int bagQuantityCountText = cartPage.getBagQuantityCountText();
 
 

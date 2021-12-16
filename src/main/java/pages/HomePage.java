@@ -9,10 +9,10 @@ import java.util.List;
 
 public final class HomePage extends BasePage {
 
-    private static By totalProductsFound = By.cssSelector(".products-found>span");
-    private static By productItem = By.cssSelector(".shelf-item");
-    private static By spinnerIcon = By.cssSelector(".spinner");
-    private static By orderByDropdown = By.cssSelector(".sort>select");
+    private static final By totalProductsFound = By.cssSelector(".products-found>span");
+    private static final By productItem = By.cssSelector(".shelf-item");
+    private static final By spinnerIcon = By.cssSelector(".spinner");
+    private static final By orderByDropdown = By.cssSelector(".sort>select");
     private static By sizesButton(String size) {
         String locatorText = "//span[text()='"+size+"']";
         return By.xpath(locatorText);

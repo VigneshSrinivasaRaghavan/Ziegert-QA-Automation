@@ -12,7 +12,7 @@ public final class TC04 extends BaseTest {
         HomePage homePage = new HomePage();
         CartPage cartPage = homePage.clickAddToCart("1")
                 .waitForCartPageToLoad()
-                .clickAddedItemRemoveButton("1")
+                .clickAddedItemRemoveButton()
                 .waitForNoItemsInCartMessageToLoad();
 
         int cartTotalPriceText = cartPage.getCartTotalPriceText();
