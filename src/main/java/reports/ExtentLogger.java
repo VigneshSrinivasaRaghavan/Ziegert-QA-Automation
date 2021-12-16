@@ -11,15 +11,7 @@ public final class ExtentLogger {
     }
 
     public static void pass(String message) {
-        try {
-            if (ReadPropertyFile.getValue(ConfigProperties.PASSEDSTEPSSCREENSHOT).equalsIgnoreCase("yes")) {
-                ExtentManager.getExtentTest().pass(message, MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
-            } else {
-                ExtentManager.getExtentTest().pass(message);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ExtentManager.getExtentTest().pass(message);
     }
 
     public static void fail(String message) {
@@ -31,15 +23,7 @@ public final class ExtentLogger {
     }
 
     public static void skip(String message) {
-        try {
-            if (ReadPropertyFile.getValue(ConfigProperties.SKIPEDSTEPSSCREENSHOT).equalsIgnoreCase("yes")) {
-                ExtentManager.getExtentTest().skip(message, MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getBase64Image()).build());
-            } else {
-                ExtentManager.getExtentTest().skip(message);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ExtentManager.getExtentTest().skip(message);
     }
 
 
