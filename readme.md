@@ -49,3 +49,8 @@ Used Maven Project for this automation. Below its the folder structure and each 
 
 ### Under src/main/resources
 - Config.properties → Hold the important configuration such as Url, Browser
+
+## JENKINS Integration
+- Integrated Jenkins with this Repository
+- When triggered build, it runs all the test and at the end it displays the Extent Report
+  ![](src/main/resources/readmeImages/Jenkins.gif)
